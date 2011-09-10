@@ -1,0 +1,13 @@
+json =
+  @results[:matches].map do |match|
+    name = match[:attributes]["licensee_name"]
+    attn = match[:attributes]["licensee_attn"]
+    if attn != ""
+      name += " (#{attn})"
+    end
+    { :value => name,
+      :docid => match[:doc] }
+  end
+json.push({ :value => @results[:total_found],
+            :total => 1 })
+

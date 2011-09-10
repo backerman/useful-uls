@@ -1,0 +1,38 @@
+- @title = "Useful ULS"
+:javascript
+  $(function() {
+    $("#submit_query").button();
+    $("#query").autocomplete({
+      source: "#{url_for :search, :autocomplete}",
+      minLength: 3,
+      delay: 200
+    })
+    .data("autocomplete")._renderItem = function(ul, item) {
+      var li = $("<li></li>") .data("item.autocomplete", item);
+      if (item.total) {
+        li.append("<a><em>Total matches: " + item.value + "</em></a>");
+      } else {
+        li.append("<a>" + item.value + "<br/>" + item.docid + "</a>");
+      }
+      return li.appendTo(ul);
+    };
+  });
+.intro
+  :markdown
+    This system allows you to perform useful full-text, geobox, and frequency
+    searches of the FCC's [Universal Licensing System][ULS].
+
+    Type all or part of a licensee's name (business or personal) into the search
+    box.  Choose a licensee from the autocomplete box to jump directly to its
+    ULS record, or select the "Search" button to continue normally.
+
+    [ULS]: http://wireless.fcc.gov/uls
+.search
+  .ui-widget
+    - form_tag '/foome' do
+      = text_field_tag :query, :id => :query, :class => :grid_4,  |
+          :placeholder => "Full-text licensee search"             |
+      = submit_tag "Search &rarr;", :id => :submit_query
+.results#results
+  This text inserted for debugging purposes.
+
