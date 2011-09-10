@@ -1,5 +1,3 @@
-require 'riddle'
-require 'riddle/2.0.1'
 require 'yajl'
 
 UsefulUls.controllers :search do
@@ -29,7 +27,13 @@ UsefulUls.controllers :search do
   end
 
   get :systems do
-   42 
+    # Use Sphinx to retrieve ULS IDs, then query database to get system
+    # information.
+    puts "Searching on #{params[:term]}"
+    fts_results = sphinx_search(params[:term], 100)
+    docs = fts_results[:matches].map {|m| m[:doc]}
+    @results = Entity.filter(:unique_system_identifier => docs)
+    render 'search/systems'
   end
 
 

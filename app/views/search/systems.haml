@@ -1,0 +1,7 @@
+- @title = "Search results"
+%table#results
+  %thead
+    %tr
+      - for colname in @results.columns
+        %th&= colname
+  = partial 'search/system', :collection => @results, :locals => { :cols => @results.columns }
