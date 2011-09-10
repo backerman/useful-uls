@@ -15,8 +15,8 @@ requiring a login.
 
 ## Support ##
 
-To request bug fixes or enhancements, open an issue on the GitHub
-tracker for this project or email brad@facefault.org.
+To request bug fixes or enhancements, open an issue on the [GitHub
+tracker][ISSUE] for this project or email brad@facefault.org.
 
 ## License ##
 
@@ -25,7 +25,8 @@ tracker for this project or email brad@facefault.org.
 [960.gs][960], which are both licensed under your choice of GPL or
 MIT.
 
+[960]: http://960.gs/
+[ISSUE]: https://github.com/backerman/useful-uls/issues
+[JQ]: http://jquery.com/
 [ULS]: http://wireless.fcc.gov/uls/
 [WTF]: http://sam.zoy.org/wtfpl/
-[JQ]: http://jquery.com/
-[960]: http://960.gs/
