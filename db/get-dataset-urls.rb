@@ -17,3 +17,4 @@ doc.xpath('//a').each do |link|
 end
 
 print zips.join "\n"
+print "\n"

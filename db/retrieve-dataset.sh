@@ -8,6 +8,10 @@ BASEDIR=$(dirname $0)
 if [ -z "$1" ]
 then
   echo "Usage: $0 [destination-directory]" >&2
+  echo >&2
+  echo "The destination directory should have at least 6GB available" >&2
+  echo "to ensure that there will be sufficient space for postprocessing."\
+    >&2
   exit 1
 fi
 
@@ -20,6 +24,9 @@ fi
 DESTDIR=$1
 mkdir -p $DESTDIR
 SRC_URLS=$($BASEDIR/get-dataset-urls.rb)
+COUNT=$(echo $SRC_URLS | wc -w)
+
+echo "Downloading ${COUNT} files to ${DESTDIR}." >&2
 
 echo $SRC_URLS |\
   (cd $DESTDIR && xargs -P 4 -n 1 wget --quiet)
