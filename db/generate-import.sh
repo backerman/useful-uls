@@ -33,5 +33,7 @@ do
     ${POSTPROCESSOR} < ${NEWFN} > ${NEWFN2}
     mv ${NEWFN2} ${NEWFN}
   fi
-  echo "\\copy pubacc_${TABLE} from '$NEWFN' with delimiter '|' null ''" >> ${OUTPUT}
+  echo "\\echo Now loading from '$NEWFN' into pubacc_${TABLE}" >> ${OUTPUT}
+  echo "\\copy pubacc_${TABLE} from '$NEWFN' with delimiter '|' null ''" \
+    >> ${OUTPUT}
 done
