@@ -7,7 +7,7 @@ CREATE OR REPLACE VIEW systems AS
   FROM   pubacc_en en
   JOIN   pubacc_hd hd
   ON     en.unique_system_identifier = hd.unique_system_identifier
-  WHERE  entity_type='L'
+  WHERE  entity_type='L';
 
 -- Sphinx index view for pubacc_en
 
