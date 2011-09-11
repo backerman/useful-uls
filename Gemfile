@@ -6,6 +6,7 @@ source :rubygems
 # Project requirements
 gem 'rake'
 gem 'rack-flash'
+gem 'nokogiri'
 
 # Component requirements
 gem 'sass'
