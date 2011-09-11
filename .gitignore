@@ -7,3 +7,4 @@ vendor/gems/*
 .sass-cache/*
 Gemfile.lock
 config/database.rb
+public/stylesheets/useful-uls.css
