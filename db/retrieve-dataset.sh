@@ -11,6 +11,12 @@ then
   exit 1
 fi
 
+if [ -z "`which wget`" -o -z "`which unzip`" ]
+then
+  echo "Please ensure that wget and unzip are in your \$PATH." >&2
+  exit 1
+fi
+
 DESTDIR=$1
 mkdir -p $DESTDIR
 SRC_URLS=$($BASEDIR/get-dataset-urls.rb)
