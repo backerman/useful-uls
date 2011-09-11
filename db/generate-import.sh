@@ -1,15 +1,26 @@
 #!/bin/bash
+#
+# Sanitize the ULS database dumps and generate a SQL command file
+# to import the data.
 
 BASEDIR=$(dirname $0)
 SANITIZER=${BASEDIR}/sanitize-uls.pl
 POSTPROCESSOR=${BASEDIR}/postprocess.awk
-OUTPUT=${BASEDIR}/import.sql
+
+if [ -z "$1" -o -z "$2" ]
+then
+    echo "Usage: $0 [source-directory] [sql-file]" >&2
+      exit 1
+fi
+
+SRCDIR=$1
+OUTPUT=$2
 
 # Clean up
 rm -f ${OUTPUT}
-find ${BASEDIR} -name \*clean\*.dat -exec rm {} +
+find $SRCDIR -name \*clean\*.dat -exec rm {} +
 
-for file in `find ${BASEDIR} -name *.dat`
+for file in `find ${SRCDIR} -name *.dat`
 do
   TABLE=`basename $file .dat | tr '[a-z]' '[A-Z]'`
   ${SANITIZER} $file

@@ -1,4 +1,8 @@
 #!/usr/bin/perl -W
+#
+# Unfornicate dumps from the ULS database:
+# * Escape intrafield newlines and pipes
+# * Remove intrafield backslashes
 
 use File::Basename;
 
@@ -19,7 +23,7 @@ foreach $fn (@ARGV) {
   my $procre;
 
   while (<$input>) {
-    # Remove all newlines and backslashes.
+    # Remove backslashes and extra newline characters.
     s/[\r\n\\]//go;
     if (m/$namere/) {
       if ($prev) {

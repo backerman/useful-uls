@@ -17,3 +17,13 @@ SRC_URLS=$($BASEDIR/get-dataset-urls.rb)
 
 echo $SRC_URLS |\
   (cd $DESTDIR && xargs -P 4 -n 1 wget --quiet)
+
+cd $DESTDIR
+for data in *.zip
+do
+  BN=`basename $data .zip`
+  mkdir $BN
+  echo "Extracting $data" >&2
+  (cd $BN && unzip ../$data)
+  rm $data
+done
