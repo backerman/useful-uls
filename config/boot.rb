@@ -25,6 +25,7 @@ end
 #
 Padrino.after_load do
   require 'will_paginate/sequel'
+  require 'yajl'
 end
 
 Padrino.load!

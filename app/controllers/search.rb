@@ -1,4 +1,14 @@
-require 'yajl'
+UsefulUls.class_eval do
+  # Add constants
+  ENTITY_DISPLAY_COLS =
+    [ :unique_system_identifier,
+      :callsign,
+      :licensee_id,
+      :entity_name,
+      :phone,
+      :fax,
+      :email ]
+end
 
 UsefulUls.controllers :search do
   # get :index, :map => "/foo/bar" do
@@ -29,10 +39,10 @@ UsefulUls.controllers :search do
   get :systems do
     # Use Sphinx to retrieve ULS IDs, then query database to get system
     # information.
-    puts "Searching on #{params[:term]}"
     fts_results = sphinx_search(params[:term], 100)
     docs = fts_results[:matches].map {|m| m[:doc]}
-    @results = Entity.filter(:unique_system_identifier => docs)
+    @results = Entity.filter(:unique_system_identifier => docs, :entity_type => 'L')
+    @columns = ENTITY_DISPLAY_COLS
     render 'search/systems'
   end
 
