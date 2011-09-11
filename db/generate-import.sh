@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Sanitize the ULS database dumps and generate a SQL command file
 # to import the data.
