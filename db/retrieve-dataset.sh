@@ -9,7 +9,7 @@ if [ -z "$1" ]
 then
   echo "Usage: $0 [destination-directory]" >&2
   echo >&2
-  echo "The destination directory should have at least 6GB available" >&2
+  echo "The destination directory should have at least 5GB available" >&2
   echo "to ensure that there will be sufficient space for postprocessing."\
     >&2
   exit 1
