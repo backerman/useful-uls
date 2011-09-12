@@ -41,8 +41,9 @@ UsefulUls.controllers :search do
     # information.
     fts_results = sphinx_search(params[:term], 100)
     docs = fts_results[:matches].map {|m| m[:doc]}
-    @results = Entity.filter(:unique_system_identifier => docs, :entity_type => 'L')
-    @columns = ENTITY_DISPLAY_COLS
+    @results = System.filter(:unique_system_identifier => docs)
+    # @columns = ENTITY_DISPLAY_COLS
+    @columns = @results.columns
     render 'search/systems'
   end
 
