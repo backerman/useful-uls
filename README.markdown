@@ -29,13 +29,13 @@ tracker][ISSUE] for this project or email brad@facefault.org.
 ## License ##
 
 &copy; 2011 Brad Ackerman N1MNB.  This code is licensed under the
-[WTFPL][WTF]; the repository also includes copies of [jQuery][JQ] and
-[960.gs][960], which are both licensed under your choice of GPL or
-MIT.
+[WTFPL][WTF]; the repository also includes copies of [Dojo][DOJO]
+([modified BSD or AFL][DOJOL]) and [960.gs][960] (GPL or MIT).
 
 [960]: http://960.gs/
 [ISSUE]: https://github.com/backerman/useful-uls/issues
-[JQ]: http://jquery.com/
+[DOJO]: http://dojotoolkit.org/
+[DOJOL]: http://dojotoolkit.org/license
 [SOCAL]: http://www.n6lhv.net/uls/
 [ULS]: http://wireless.fcc.gov/uls/
 [WTF]: http://sam.zoy.org/wtfpl/
