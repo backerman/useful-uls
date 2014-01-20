@@ -1,4 +1,4 @@
-source :rubygems
+source "https://rubygems.org"
 
 # Server requirements
 # gem 'thin' or mongrel
@@ -21,7 +21,9 @@ gem 'yajl-ruby'
 
 
 # Padrino
-gem 'padrino', '0.10.2'
+# gem 'padrino', '0.10.2'
+gem 'padrino'
 
 # Gems that must load after Padrino
-gem 'will_paginate', '~> 3.0.0'
+gem 'will_paginate'
+# gem 'will_paginate', '~> 3.0.0'
