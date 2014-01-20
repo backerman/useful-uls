@@ -26,7 +26,8 @@
 # override these settings in the subapps as needed.
 #
 Padrino.configure_apps do
-  # enable :sessions
+  enable :sessions
+  # FIXME This needs to change for production.
   set :session_secret, '02c1618765b64295a79ed4c216a9ac53ff36d28b3ab0fd66164091694388f34f'
 end
 
