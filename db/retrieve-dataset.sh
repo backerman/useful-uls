@@ -1,11 +1,11 @@
-#!/usr/bin/env bash
+#!/bin/sh
 #
 # Download the current ULS database to the specified output
 # directory.
 
 BASEDIR=$(dirname $0)
 
-if [ -z "$1" ]
+if [[ -z "$1" || "$1" == "-h" ]]
 then
   echo "Usage: $0 [destination-directory]" >&2
   echo >&2
@@ -21,20 +21,28 @@ then
   exit 1
 fi
 
+sigint_handler()
+{
+  echo "SIGINT received; exiting."
+  exit 2
+}
+trap sigint_handler SIGINT
+
 DESTDIR=$1
 mkdir -p $DESTDIR
+echo "Retrieving available datasets from ULS." >&2
 SRC_URLS=$($BASEDIR/get-dataset-urls.rb)
 COUNT=$(echo $SRC_URLS | wc -w)
 
 echo "Downloading ${COUNT} files to ${DESTDIR}." >&2
 
 echo $SRC_URLS |\
-  (cd $DESTDIR && xargs -P 4 -n 1 wget --quiet)
+  (cd $DESTDIR && xargs -P 4 -n 1 wget -nv)
 
 cd $DESTDIR
 for data in *.zip
 do
-  BN=`basename $data .zip`
+  BN=$(basename $data .zip)
   mkdir $BN
   echo "Extracting $data" >&2
   (cd $BN && unzip ../$data)
