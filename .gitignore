@@ -8,3 +8,4 @@ vendor/gems/*
 Gemfile.lock
 config/database.rb
 public/stylesheets/useful-uls.css
+db/schema-base.sql
