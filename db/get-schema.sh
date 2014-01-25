@@ -16,6 +16,7 @@ SCHEMAURL=$(nokogiri --type html -e \
 
 echo "Retrieving $SCHEMAURL" >&2
 TMPFILE=$(mktemp /tmp/$(basename $0)$$.XXXXXX )
+# SQL::Translator doesn't handle T-SQL-style comments correctly.
 curl -s $SCHEMAURL | sed 's/\/\*.*\*\///' > $TMPFILE
 
 # There has to be a better way to do this.
