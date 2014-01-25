@@ -46,5 +46,5 @@ do
   mkdir $BN
   echo "Extracting $data" >&2
   (cd $BN && unzip ../$data)
-  rm $data
+#  rm $data
 done

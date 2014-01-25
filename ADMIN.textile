@@ -6,6 +6,8 @@ h2. Prerequisites
 * rvm
 * Sphinx
 * Perl
+** Parallel::ForkManager
+** SQL::Translator
 
 h2. Loading data
 
@@ -13,3 +15,4 @@ All scripts for loading ULS data into the local PostgreSQL instance are in the @
 
 # Use @retrieve-dataset.sh@ to download the latest weekly dumps from the FCC and put them in a data directory.
 # Use @get-schema.sh@ to place the current schema version (PostgreSQLized) in @db/base-schema.sql@.
+# Use @generate-import.sh@ to generate an import script.

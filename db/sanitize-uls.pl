@@ -5,10 +5,15 @@
 # * Remove intrafield backslashes
 
 use File::Basename;
+use Parallel::ForkManager;
+
+# Fork a maximum of eight workers.
+my $pm = Parallel::ForkManager->new(8);
 
 my $fn;
 
 foreach $fn (@ARGV) {
+  $pm->start and next;
   my ($name, $path, $suffix) = fileparse($fn, qr/\.[^.]*/);
   $name = uc $name;  # Fix lowercased names
   my $outname = $path . $name . "-clean" . $suffix;
@@ -51,7 +56,7 @@ foreach $fn (@ARGV) {
             $during =~ s/\|/\\\|/g;
             my $newprev = $before . $during . $after;
             if ($newprev ne $prev) {
-              # print STDERR 
+              # print STDERR
               #   "Embedded pipes removed from line.\nWas: " .
               #   "$prev\nIs:  $newprev\n-----------\n";
               $prev = $newprev;
@@ -81,4 +86,7 @@ foreach $fn (@ARGV) {
   close $input;
   close $output;
   print STDERR "Processed $name with $count records.\n";
+  $pm->finish;
 }
+$pm->wait_all_children;
+

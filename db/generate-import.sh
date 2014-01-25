@@ -20,10 +20,13 @@ OUTPUT=$2
 rm -f ${OUTPUT}
 find $SRCDIR -name \*clean\*.dat -exec rm {} +
 
-for file in `find ${SRCDIR} -name *.dat`
+FILES=$(find ${SRCDIR} -name *.dat)
+
+${SANITIZER} $FILES
+
+for file in $FILES
 do
   TABLE=`basename $file .dat | tr '[a-z]' '[A-Z]'`
-  ${SANITIZER} $file
   rm $file
   NEWFN="`dirname $file`/${TABLE}-clean.dat"
   if [[ ${TABLE} == "EM" || ${TABLE} == "F2" || ${TABLE} == "L2" || 
