@@ -28,7 +28,7 @@ tracker][ISSUE] for this project or email brad@facefault.org.
 
 ## License ##
 
-&copy; 2011 Brad Ackerman N1MNB.  This code is licensed under the
+&copy; 2011&ndash;2014 Brad Ackerman N1MNB.  This code is licensed under the
 [WTFPL][WTF]; the repository also includes copies of [jQuery][JQ] and
 [960.gs][960], which are both licensed under your choice of GPL or
 MIT.
