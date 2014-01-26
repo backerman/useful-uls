@@ -29,8 +29,8 @@ do
   TABLE=`basename $file .dat | tr '[a-z]' '[A-Z]'`
   rm $file
   NEWFN="`dirname $file`/${TABLE}-clean.dat"
-  if [[ ${TABLE} == "EM" || ${TABLE} == "F2" || ${TABLE} == "L2" || 
-        ${TABLE} == "PA" ]]; then
+  if [[ ${TABLE} == "EM" || ${TABLE} == "F2" || ${TABLE} == "L2" ||
+        ${TABLE} == "PA" || ${TABLE} == "BF" ]]; then
     NEWFN2="`dirname $file`/${TABLE}-cleaner.dat"
     echo "Postprocessing ${TABLE} records"
     ${POSTPROCESSOR} < ${NEWFN} > ${NEWFN2}

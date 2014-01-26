@@ -36,6 +36,10 @@ my $tr = SQL::Translator->new(
       foreach my $table (@tables) {
         if (my $field = $table->get_field("offset")) {
           $field->name("frequency_offset");
+        } elsif ($field = $table->get_field("structure_type")) {
+          # Structure type is 7 characters but schema says 6.
+          # Correct it in our copy.
+          $field->size($field->size+1);
         }
       }
     }

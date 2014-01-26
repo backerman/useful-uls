@@ -13,6 +13,8 @@ h2. Loading data
 
 All scripts for loading ULS data into the local PostgreSQL instance are in the @db@ directory.
 
-# Use @retrieve-dataset.sh@ to download the latest weekly dumps from the FCC and put them in a data directory.
+# Use @retrieve-dataset.sh@ to download the latest weekly dumps from the FCC and put them in a data directory. *N.B.: This step may take over an hour to execute.*
 # Use @get-schema.sh@ to place the current schema version (PostgreSQLized) in @db/base-schema.sql@.
+# Use @create-database.sh@ to create the @uls@ role and database, and apply the schema.
 # Use @generate-import.sh@ to generate an import script.
+# Run the import script on the database, e.g. @psql uls uls < import.sql@.

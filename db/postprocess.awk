@@ -6,6 +6,11 @@ BEGIN {
   OFS="|";
 }
 
+# Build-out frequency
+/^BF/ {
+  print $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, fixtimestamp($11), $12;
+}
+
 # Emission
 /^EM/ {
   print $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14,
