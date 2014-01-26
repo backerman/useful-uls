@@ -21,12 +21,25 @@ curl -s $SCHEMAURL | sed 's/\/\*.*\*\///' > $TMPFILE
 
 # There has to be a better way to do this.
 PERLPROG=$(cat <<"EOM"
+use strict;
 use warnings;
 use SQL::Translator;
 
 my $tr = SQL::Translator->new(
   quote_table_names => 0,
-  quote_field_names => 0
+  quote_field_names => 0,
+  filters => [
+    sub {
+      # "offset" is a reserved word; change it.
+      my $schema = shift;
+      my @tables = $schema->get_tables;
+      foreach my $table (@tables) {
+        if (my $field = $table->get_field("offset")) {
+          $field->name("frequency_offset");
+        }
+      }
+    }
+  ]
 );
 
 my $output = $tr->translate(

@@ -3,7 +3,7 @@
 -- System view
 CREATE OR REPLACE VIEW systems AS
   SELECT en.unique_system_identifier, license_status, radio_service_code,
-         en.callsign, entity_name, attention_line, city, state, zip_code
+         en.call_sign, entity_name, attention_line, city, state, zip_code
   FROM   pubacc_en en
   JOIN   pubacc_hd hd
   ON     en.unique_system_identifier = hd.unique_system_identifier
