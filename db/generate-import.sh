@@ -40,3 +40,6 @@ do
   echo "\\copy pubacc_${TABLE} from '$NEWFN' with delimiter '|' null ''" \
     >> ${OUTPUT}
 done
+
+echo "\\echo Analyzing to make the query planner happy." >> ${OUTPUT}
+echo "VACUUM ANALYZE;" >> ${OUTPUT}

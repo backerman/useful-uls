@@ -9,6 +9,19 @@ h2. Prerequisites
 ** Parallel::ForkManager
 ** SQL::Translator
 
+h2. Database tuning
+
+I changed these parameters from their defaults:
+
+|_. Tunable|_. Default|_. New value|_. Comments|
+|checkpoint_segments|3|32|520 MB disk|
+|shared_buffers|128MB|1GB||
+|work_mem|1MB|32MB|see if we need more|
+|maintenance_work_mem|16MB|256MB||
+|effective_cache_size|128MB|1GB||
+
+IANA DBA, so I may be changing them more (or less) in future.
+
 h2. Loading data
 
 All scripts for loading ULS data into the local PostgreSQL instance are in the @db@ directory.
